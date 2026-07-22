@@ -27,7 +27,7 @@
   <a href="presentation/Kioptrix4-Public-Assessment.pdf">
     <img
       src="https://img.shields.io/badge/Open_Presentation-PDF-d93025"
-      alt="Open Presentation"
+      alt="Open Assessment Presentation"
     >
   </a>
   <a href="evidence/EVIDENCE_INDEX.md">
@@ -39,7 +39,7 @@
   <a href="findings/">
     <img
       src="https://img.shields.io/badge/Review_Findings-K4--001_%7C_K4--002-0b2b4c"
-      alt="Review Findings"
+      alt="Review Detailed Findings"
     >
   </a>
 </p>
@@ -51,16 +51,16 @@
 <p align="center">
   <a href="presentation/Kioptrix4-Public-Assessment.pdf">
     <img
-      src="assets/previews/01-cover.png"
+      src="assets/previews/02-executive-summary.png"
       width="48%"
-      alt="Kioptrix 4 Vulnerability Assessment cover"
+      alt="Executive summary and attack progression"
     >
   </a>
   <a href="presentation/Kioptrix4-Public-Assessment.pdf">
     <img
-      src="assets/previews/02-executive-summary.png"
+      src="assets/previews/03-sqli-confirmation.png"
       width="48%"
-      alt="Executive summary and attack progression"
+      alt="Blind SQL injection confirmation"
     >
   </a>
 </p>
@@ -68,65 +68,23 @@
 <p align="center">
   <a href="presentation/Kioptrix4-Public-Assessment.pdf">
     <img
-      src="assets/previews/03-sqli-confirmation.png"
-      width="32%"
-      alt="Blind SQL injection confirmation"
-    >
-  </a>
-  <a href="presentation/Kioptrix4-Public-Assessment.pdf">
-    <img
       src="assets/previews/04-root-compromise.png"
-      width="32%"
+      width="48%"
       alt="Root-level command execution and effective root access"
     >
   </a>
   <a href="presentation/Kioptrix4-Public-Assessment.pdf">
     <img
       src="assets/previews/05-remediation.png"
-      width="32%"
+      width="48%"
       alt="Remediation and validation roadmap"
     >
   </a>
 </p>
 
-<h3 align="center">
-  <a href="presentation/Kioptrix4-Public-Assessment.pdf">
-    Open the Full Assessment Presentation
-  </a>
-</h3>
-
 <p align="center">
-  The Evidence Directory provides technical verification for presentation claims E01–E13.
+  <em>Selected slides from the full assessment presentation.</em>
 </p>
-
----
-
-## Project at a Glance
-
-```mermaid
-flowchart LR
-    P["Assessment Presentation<br/>Primary Deliverable"]
-    E["Evidence Directory<br/>E01–E13"]
-    F["Detailed Findings<br/>K4-001 and K4-002"]
-    D["Supporting Documentation<br/>Scope, Handling, References"]
-
-    P -->|"Verify technical claims"| E
-    E -->|"Review root cause and impact"| F
-    F -->|"Review scope and supporting context"| D
-```
-
-```mermaid
-flowchart LR
-    A["Network Discovery"] --> B["Service Enumeration"]
-    B --> C["Login Mapping"]
-    C --> D["Blind SQL Injection"]
-    D --> E["Credential Extraction"]
-    E --> F["Authenticated SSH Access"]
-    F --> G["Restricted-Shell Escape"]
-    G --> H["MySQL Misconfiguration"]
-    H --> I["Root-Level Execution"]
-    I --> J["Effective Root Shell"]
-```
 
 ---
 
@@ -139,33 +97,47 @@ Testing identified two critical findings that formed a complete compromise chain
 1. A blind SQL injection vulnerability in the login application exposed valid credentials, which were reused to obtain authenticated SSH access.
 2. An insecure MySQL configuration allowed the low-privileged SSH session to execute Linux commands with root privileges and obtain an effective root shell.
 
-The project demonstrates more than exploitation. It also includes evidence validation, negative controls, source-code root-cause analysis, business-risk communication, remediation planning, and post-remediation validation requirements.
+The project demonstrates not only exploitation, but also evidence validation, negative controls, source-code root-cause analysis, business-risk communication, remediation planning, and post-remediation validation design.
 
 ---
 
-## Verified Attack Path
+## Assessment at a Glance
 
-```text
-Network Discovery
-        ↓
-Service Enumeration
-        ↓
-Login Request Mapping
-        ↓
-Blind SQL Injection
-        ↓
-Credential Extraction
-        ↓
-Authenticated SSH Access
-        ↓
-Restricted-Shell Escape
-        ↓
-MySQL Misconfiguration
-        ↓
-Root-Level Command Execution
-        ↓
-Effective Root Shell
-```
+<p align="center">
+  <img
+    src="https://img.shields.io/badge/Critical_Findings-2-d93025"
+    alt="Two critical findings"
+  >
+  <img
+    src="https://img.shields.io/badge/Evidence_Groups-E01--E13-0b2b4c"
+    alt="Evidence groups E01 through E13"
+  >
+  <img
+    src="https://img.shields.io/badge/Final_Impact-Effective_Linux_Root-d93025"
+    alt="Effective Linux root access verified"
+  >
+  <img
+    src="https://img.shields.io/badge/Environment-Authorized_Isolated_Lab-0b2b4c"
+    alt="Authorized isolated laboratory"
+  >
+</p>
+
+<p align="center">
+  <strong>
+    Discovery → Service Enumeration → SQL Injection → Credential Access →
+    Authenticated SSH → Shell Escape → MySQL Escalation → Effective Root
+  </strong>
+</p>
+
+| Assessment Phase | Evidence | Verified Outcome | Capabilities Demonstrated |
+|---|---|---|---|
+| **Reconnaissance & Enumeration** | **E01–E02** | Identified exposed SSH, HTTP, NetBIOS, and SMB services and validated the Apache, PHP, OpenSSH, and Samba technology stack. | Network discovery, full TCP scanning, targeted enumeration, WhatWeb, and Nikto analysis |
+| **Web Testing & SQL Injection** | **E03–E05** | Mapped the login request, established an invalid-login control, and confirmed boolean-based and time-based blind SQL injection in `mypassword`. | HTTP analysis, `curl`, manual testing, sqlmap validation, and positive and negative controls |
+| **Credential & Host Access** | **E06–E07** | Extracted valid credentials from the `members` database and authenticated to SSH as `john`. | Database enumeration, credential analysis, credential-reuse testing, and SSH validation |
+| **Post-Exploitation & Root Cause** | **E08–E10** | Escaped the restricted shell, confirmed the low-privilege baseline, and identified unsafe SQL construction and excessive database privileges. | Linux enumeration, restricted-shell analysis, Python shell escape, privilege baselining, and source-code review |
+| **Privilege Escalation & Verification** | **E11–E13** | Confirmed passwordless MySQL administrative access, a root-owned MySQL service, an enabled `sys_exec` UDF, root-level command execution, and `euid=0(root)`. | MySQL security review, privilege-escalation analysis, UDF command execution, and root-access verification |
+
+> **Verification path:** Review the [Assessment Presentation](presentation/Kioptrix4-Public-Assessment.pdf), verify its technical claims through the [Evidence Directory](evidence/EVIDENCE_INDEX.md), and inspect the complete analysis in the [Detailed Findings](findings/).
 
 ---
 
@@ -178,59 +150,11 @@ Effective Root Shell
 
 ---
 
-## Evidence and Verification
-
-Every major presentation claim can be traced to supporting technical evidence:
-
-```text
-Presentation Claim
-        ↓
-Evidence ID
-        ↓
-GitHub Evidence Entry
-        ↓
-Sanitized Screenshot or Transcript
-        ↓
-Detailed Vulnerability Finding
-```
-
-### Evidence Ranges
-
-| Evidence | Assessment Phase |
-|---|---|
-| **E01–E02** | Reconnaissance and service enumeration |
-| **E03–E05** | Login mapping and SQL injection validation |
-| **E06–E07** | Credential extraction and SSH access |
-| **E08–E10** | Shell escape, privilege baseline, and root-cause analysis |
-| **E11–E13** | MySQL escalation and root-access verification |
-
-The [Evidence Directory](evidence/EVIDENCE_INDEX.md) is the primary technical-verification layer for this project.
-
----
-
-## Skills Demonstrated
-
-- Network discovery and full TCP service enumeration
-- Web application and authentication-flow testing
-- SQL injection validation using positive and negative controls
-- Database enumeration and credential analysis
-- Credential-reuse and SSH authentication testing
-- Linux post-exploitation and privilege baselining
-- Restricted-shell analysis and escape
-- Application source-code root-cause analysis
-- MySQL account, service, and UDF security review
-- Root-level command-execution verification
-- Evidence preservation, redaction, and traceability
-- Vulnerability reporting and executive risk communication
-- Remediation planning and validation design
-
----
-
 ## Supporting Project Resources
 
 | Resource | Purpose |
 |---|---|
-| [Evidence Directory](evidence/EVIDENCE_INDEX.md) | Verifies presentation claims using evidence IDs E01–E13, sanitized screenshots, transcripts, results, limitations, and related findings |
+| [Evidence Directory](evidence/EVIDENCE_INDEX.md) | Maps presentation claims E01–E13 to testing objectives, commands, sanitized screenshots, transcripts, results, limitations, and related findings |
 | [Detailed Findings](findings/) | Contains the complete technical writeups for K4-001 and K4-002 |
 | [Scope and Authorization](docs/SCOPE_AND_AUTHORIZATION.md) | Documents assessment ownership, boundaries, isolation, and safety controls |
 | [Evidence Handling](docs/EVIDENCE_HANDLING.md) | Explains artifact preservation, sanitization, and public-release procedures |
@@ -244,7 +168,7 @@ Original assessment artifacts are preserved privately.
 
 The public repository contains sanitized copies with credentials, password values, and session identifiers redacted. Private RFC 1918 laboratory addresses are retained for technical traceability.
 
-Presentation exhibits were reconstructed from the original terminal evidence for readability and visual consistency. They do not replace the underlying screenshots and transcripts referenced in the [Evidence Directory](evidence/EVIDENCE_INDEX.md).
+Presentation exhibits were reconstructed from the original terminal evidence for readability and visual consistency. They do not replace the screenshots and transcripts referenced in the [Evidence Directory](evidence/EVIDENCE_INDEX.md).
 
 See [Evidence Handling](docs/EVIDENCE_HANDLING.md) for the complete policy.
 
