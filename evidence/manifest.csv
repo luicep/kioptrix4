@@ -1,0 +1,32 @@
+evidence_id,file_name,repository_path,public_redaction,sha256
+E01,E01.1-full-tcp-port-scan.png,evidence/E01-network-scan/E01.1-full-tcp-port-scan.png,No/Not required,ab3c30256905541d2bc4bb6275cff048c7855eeb563af1f4d1292a27ee0b8262
+E02,E02.1-targeted-service-enumeration.png,evidence/E02-service-enumeration/E02.1-targeted-service-enumeration.png,No/Not required,bf586025b536e3d65ab3a3541b0305f8465625f298dd77bd4cab5086c135fb6e
+E02,E02.2-whatweb-technology-identification.png,evidence/E02-service-enumeration/E02.2-whatweb-technology-identification.png,No/Not required,b9007465452af4fc1a682001cb877bec0e2c2b53777bf0a25f4e9f544458f9ff
+E02,E02.3-nikto-web-enumeration.png,evidence/E02-service-enumeration/E02.3-nikto-web-enumeration.png,No/Not required,2a4298aa41d1a7e116b629911967b601b152ef4fbb8d58f0fea0ea45fb29c9cb
+E03,E03.1-login-page-identified.png,evidence/E03-login-mapping/E03.1-login-page-identified.png,No/Not required,f8b448ae4e0fd0b8361ff23203b9547e6ede5218a3bbb9c2b2b7590809d76b26
+E03,E03.2-login-request-parameters.png,evidence/E03-login-mapping/E03.2-login-request-parameters.png,No/Not required,ed188e3a1001ef580bc2d7da4d0ba913af8cea7e08c5686d49ab0957d63ea035
+E03,E03.3a-invalid-login-terminal-control.png,evidence/E03-login-mapping/E03.3a-invalid-login-terminal-control.png,Yes,faa0937b5a33e752c61dffd28f2b3b650547ffba215f47ca534855494506e752
+E03,E03.3b-invalid-login-browser-control.png,evidence/E03-login-mapping/E03.3b-invalid-login-browser-control.png,Yes,9c53115793aa6a59f8688d1542d913156296be18b2a7951651859b9c37d229cc
+E04,E04.1-crafted-input-redirect-behavior.png,evidence/E04-manual-bypass/E04.1-crafted-input-redirect-behavior.png,No/Not required,3b1515456dcbdf72d89e4a73ec1c20d014033b20486d5b4ae8c0db0699af13b6
+E05,E05.1-sqlmap-mypassword-confirmed.png,evidence/E05-sql-injection-confirmation/E05.1-sqlmap-mypassword-confirmed.png,No/Not required,08f219c3f4c173fcd727c6a118535f472d1aa5c890c74af3837478c33e1a8285
+E05,E05.2-sqlmap-myusername-negative-control.png,evidence/E05-sql-injection-confirmation/E05.2-sqlmap-myusername-negative-control.png,Yes,4b6dc3a7b28e666162615588390f3d7b9516f05f5b631d69e8ce4708e1e9eaf3
+E05,E05.3-sqlmap-confirmation-transcript.txt,evidence/E05-sql-injection-confirmation/E05.3-sqlmap-confirmation-transcript.txt,No/Not required,e59cf11e8309e67bbe75cb6749238da3d318c79b546e1913a9a294092a17fd23
+E06,E06.1-members-table-enumeration.png,evidence/E06-credential-extraction/E06.1-members-table-enumeration.png,No/Not required,27b5e1ecc9c369cd753a4f00d7c1b1518cd91b89132ae7d90b46e1e9ac672d26
+E06,E06.2-members-column-enumeration.png,evidence/E06-credential-extraction/E06.2-members-column-enumeration.png,No/Not required,223e1c2b2dbd7043bf62e24633031cc9601a532ae2875017c078fe67cdd1a622
+E06,E06.3-credential-dump-redacted.png,evidence/E06-credential-extraction/E06.3-credential-dump-redacted.png,Yes,09d2bc2896a996e74828701fefdd9075a2b3fd1a6a385f44a8a93ec243817433
+E07,E07.1-ssh-access-john.png,evidence/E07-ssh-access/E07.1-ssh-access-john.png,No/Not required,032a5fb064821361e16a3a9702ba6bd813fb4117974b8f202e059cc0f7a0e587
+E07,E07.2-ssh-access-robert.png,evidence/E07-ssh-access/E07.2-ssh-access-robert.png,No/Not required,6cb2b2ffa65b79874b4b112cd4265b6c88ff1b69e13b038f06864b3ab11231f6
+E08,E08.1-restricted-shell-escape.png,evidence/E08-shell-escape/E08.1-restricted-shell-escape.png,No/Not required,ce0df7751018bb132648fa5e1dcb82d4ac206b16b639de6d0829ff531efa628d
+E09,E09.1-local-user-baseline.png,evidence/E09-privilege-baseline/E09.1-local-user-baseline.png,No/Not required,ebb6454b7c079060f32f65d1d91ee3b905c07bae1de7cd17fd64b736c93e510a
+E09,E09.2-sudo-authorization-denied.png,evidence/E09-privilege-baseline/E09.2-sudo-authorization-denied.png,No/Not required,afeb724dbc377bdf3649b7470f9b61ca3b2cda45cd719b7e2530382e3f9a201e
+E10,E10.1-checklogin-source-code-root-cause.png,evidence/E10-source-code-analysis/E10.1-checklogin-source-code-root-cause.png,No/Not required,283326a3a15cc2aad21dd57c999d8e3c067e87e22cb33659a5edde8a0b1add97
+E11,E11.1-passwordless-mysql-root-access.txt,evidence/E11-mysql-escalation-conditions/E11.1-passwordless-mysql-root-access.txt,No/Not required,9eb51ea4ec00d6b7abdbeb1df97974ae55664a18b92d60cd3b7d1cf8c11f2927
+E11,E11.2-mysqld-root-and-sys-exec-udf.png,evidence/E11-mysql-escalation-conditions/E11.2-mysqld-root-and-sys-exec-udf.png,No/Not required,58258062e20018120d5c023c61fb55bdb3809a144fd0a0cde4334e7fa72d4d18
+E12,E12.1-root-command-execution-proof.png,evidence/E12-root-command-execution/E12.1-root-command-execution-proof.png,No/Not required,d28019ec173094137724db557d93b5aef27c8eb8854b2ffbda77a71fe7d99d80
+E13,E13.1-effective-root-shell.png,evidence/E13-effective-root-shell/E13.1-effective-root-shell.png,No/Not required,7fd826d256c233f6ef46f561dff93870e10e1250dd9d742cbb743d392d20952a
+,EVIDENCE_INDEX.md,evidence/EVIDENCE_INDEX.md,No/Not required,388798d93addf1b798b00f3efb1c98cfa0495c8687bcd7d48ca36254824233a1
+S01,S01-lab-network-confirmation.png,evidence/supporting/lab-validation/S01-lab-network-confirmation.png,No/Not required,3d00702f52432e838818e7f8c70137f7a72e6e5cbc4e1b13a776148eecf8b8eb
+S02,S02-host-discovery-ping-sweep.png,evidence/supporting/lab-validation/S02-host-discovery-ping-sweep.png,No/Not required,90c9d3f31a9b050a401c209b9c67c38391d9cd0206037bf412b28c0c33d02e83
+S03,S03-target-reachability-confirmed.png,evidence/supporting/lab-validation/S03-target-reachability-confirmed.png,No/Not required,baffa70820d7478fd3fc82bda2701e79aaf45623a8d6fe525ec06f1c1dc1c508
+SF01,SF01.1-database-backup-manual-validation.png,evidence/supporting-findings/SF01-exposed-database-backup/SF01.1-database-backup-manual-validation.png,No/Not required,74ea171f4d4e97b725d06cf7ec9c03a92d70ca9ca35ebd0401935721fcafa3f6
+SF01,SF01.2-database-backup-content-redacted.png,evidence/supporting-findings/SF01-exposed-database-backup/SF01.2-database-backup-content-redacted.png,Yes,ceb88c4d37289db2f9a2cfe107fa459026bf0c4fdf92e9b3fd89232c58206a55
