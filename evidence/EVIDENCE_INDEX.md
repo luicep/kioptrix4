@@ -295,8 +295,4 @@ This directory is the central technical verification layer for the Kioptrix 4 as
 
 **Interpretation:** This was a separately confirmed information-disclosure weakness, not the source of the successful SSH compromise.
 
----
 
-## Repository Verification
-
-Repository: https://github.com/runeforged/kioptrix4
